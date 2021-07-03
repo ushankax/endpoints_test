@@ -13,8 +13,8 @@ def pytest_assertrepr_compare(op, left, right):
 
 def pytest_exception_interact(node, call, report):
     """Additional info for logs."""
-    log.error(f'{node}')
-    log.error(f'{report}')
+    log.info(f'{node}')
+    log.info(f'{report}')
 
 
 def pytest_configure(config):
