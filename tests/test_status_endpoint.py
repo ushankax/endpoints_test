@@ -27,9 +27,9 @@ def test_status_post_request_with_text_status_code_returns_400():
     assert requests.post('https://httpbin.org/status/text_code').status_code == HTTPStatus.BAD_REQUEST
 
 
-def test_status_post_request_with_empty_status_code_returns_400():
-    """Check empty data in POST-request instead status code returns 400."""
-    assert requests.post('https://httpbin.org/status/text_code').status_code == HTTPStatus.BAD_REQUEST
+def test_status_post_request_with_empty_status_code_returns_404():
+    """Check empty data in POST-request instead status code returns 404."""
+    assert requests.post('https://httpbin.org/status/').status_code == HTTPStatus.NOT_FOUND
 
 
 def test_status_post_request_with_two_status_codes_returns_one_of_them_in_response():
