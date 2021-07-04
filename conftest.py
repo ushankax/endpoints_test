@@ -2,19 +2,17 @@ from datetime import datetime
 import logging
 import os
 
-log = logging.getLogger(__name__)
+import pytest
 
 
-def pytest_assertrepr_compare(op, left, right):
-    """This function will print log everytime when assert fails."""
-    log.error(f'AssertionError: {left} {op} {right} \n')
-    return ["AssertionError:", f'{left} {op} {right}']
-
-
-def pytest_exception_interact(node, call, report):
-    """Additional info for logs."""
-    log.info(f'{node}')
-    log.info(f'{report}')
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_call():
+    try:
+        outcome = yield
+        outcome.get_result()
+    except AssertionError:
+        logging.exception('Caught AssertionError:')
+        raise
 
 
 def pytest_configure(config):
