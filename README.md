@@ -118,7 +118,7 @@
 2. Установленные библиотеки: pytest, requests.
 
 Действия для воспроизведения:
-1. Отправляем POST-запрос на адрес https://httpbin.org/status/code:weight, где code1 - существующий HTTP-статус, а weight1 - его вес.
+1. Отправляем POST-запрос на адрес https://httpbin.org/status/code:weight, где code - существующий HTTP-статус, а weight - его вес.
 2. Проверяем, какой HTTP-статус вернулся в ответе.
 
 Функция для воспроизведения: tests/test_status_endpoint.py::test_status_post_request_with_only_code_and_weight_returns_400
